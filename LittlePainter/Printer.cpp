@@ -26,7 +26,7 @@ Printer::Printer()
 
 void Printer::onUpdate()
 {
-	if (MenuBar::GetCurrentPrintTool() == MenuBar::INIT)
+	if (MenuBar::GetCurrentPrintTool() == MenuBar::RESET)
 	{
 		MenuBar::init(this);
 		this->removeChild(Tool);
@@ -57,7 +57,7 @@ void Printer::onUpdate()
 			this->addChild(Tool);
 			CurrentTool = MenuBar::PEN;
 			break;
-		case MenuBar::INIT:
+		case MenuBar::RESET:
 		default:
 			break;
 		}
@@ -77,7 +77,7 @@ Sprite* Printer::GetToolSprite(MenuBar::PrintTool tool)
 	case MenuBar::PEN:
 		return gcnew PrinterPen;
 		break;
-	case MenuBar::INIT:
+	case MenuBar::RESET:
 	default:
 		return gcnew Sprite;
 		break;

@@ -14,8 +14,9 @@ public:
         LINE,
         RECT,
         PEN,
-        INIT
+        RESET
     };
+
 public:
     static void init(Node* scene);
 
@@ -29,7 +30,6 @@ public:
     static void SetToolCurrentColor(PrintTool tool);
 
     static Image* GetPrintToolImage(PrintTool tool);
-    static String GetPrintToolFilePath(PrintTool tool);
     static MenuBar::PrintTool GetCurrentPrintTool();
 
     static float GetMenuBarBottom();
@@ -55,4 +55,3 @@ private:
 
     static float MenuBarBottom;                                                    //选项菜单底部坐标
 };
-

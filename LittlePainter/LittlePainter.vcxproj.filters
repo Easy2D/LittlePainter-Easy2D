@@ -62,8 +62,30 @@
     <ClInclude Include="PrinterCircle.h">
       <Filter>头文件\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LittlePainter.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\init.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\line.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\pen.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\rect.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

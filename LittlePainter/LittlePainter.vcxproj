@@ -147,9 +147,19 @@
     <ClInclude Include="PrinterLine.h" />
     <ClInclude Include="PrinterPen.h" />
     <ClInclude Include="PrinterRect.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LittlePainter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\init.png" />
+    <Image Include="res\line.png" />
+    <Image Include="res\pen.png" />
+    <Image Include="res\rect.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

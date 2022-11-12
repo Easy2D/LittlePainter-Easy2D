@@ -1,45 +1,46 @@
 #include "MenuBar.h"
+#include "resource.h"
 
 Color colors[40] = {
-        0x000000,
-        0x0000FF,
-        0x8A2BE2,
-        0xA52A2A,
-        0xD2691E,
-        0x00008B,
-        0xA9A9A9,
-        0x006400,
-        0xFF8C00,
-        0x8B0000,
-        0x9400D3,
-        0x228B22,
-        0xFFD700,
-        0x808080,
-        0x008000,
-        0xADFF2F,
-        0xADD8E6,
-        0xE0FFFF,
-        0x90EE90,
-        0xD3D3D3,
-        0xFFB6C1,
-        0x20B2AA,
-        0x87CEFA,
-        0xFFFFE0,
-        0xFFA500,
-        0xFF4500,
-        0xFFC0CB,
-        0x800080,
-        0xFF0000,
-        0xC0C0C0,
-        0x87CEEB,
-        0xFFFAFA,
-        0xEE82EE,
-        0xF5DEB3,
-        0xFFFFFF,
-        0xF5F5F5,
-        0xDEB887,
-        0xFFFF00,
-        0x9ACD32,
+        Color::Black,
+        Color::Blue,
+        Color::BlueViolet,
+        Color::Brown,
+        Color::Chocolate,
+        Color::DarkBlue,
+        Color::DarkGray,
+        Color::DarkGreen,
+        Color::DarkOrange,
+        Color::DarkRed,
+        Color::DarkViolet,
+        Color::ForestGreen,
+        Color::Gold,
+        Color::Gray,
+        Color::Green,
+        Color::GreenYellow,
+        Color::LightBlue,
+        Color::LightCyan,
+        Color::LightGreen,
+        Color::LightGray,
+        Color::LightPink,
+        Color::LightSeaGreen,
+        Color::LightSkyBlue,
+        Color::LightYellow,
+        Color::Orange,
+        Color::OrangeRed,
+        Color::Pink,
+        Color::Purple,
+        Color::Red,
+        Color::Silver,
+        Color::SkyBlue,
+        Color::Snow,
+        Color::Violet,
+        Color::Wheat,
+        Color::White,
+        Color::WhiteSmoke,
+        Color::Wood,
+        Color::Yellow,
+        Color::YellowGreen,
         Color::Transparent
 };
 
@@ -141,7 +142,7 @@ void MenuBar::init(Node * scene)
     ToolColorText->setScale(20 / ToolColorText->getHeight());
     ToolColorText->setPosX(1050);
 
-    CurrentTool->open(GetPrintToolFilePath(CurrentPrintTool));
+    CurrentTool->setImage(GetPrintToolImage(CurrentPrintTool));
     CurrentTool->setSize(35, 35);
     CurrentTool->setPosX(1100);
 
@@ -150,7 +151,7 @@ void MenuBar::init(Node * scene)
 
     for (int i = 0; i < 4; i++)
     {
-        auto ToolImage = gcnew Sprite(GetPrintToolFilePath(MenuBar::PrintTool(i)));
+        auto ToolImage = gcnew Sprite(GetPrintToolImage(MenuBar::PrintTool(i)));
         ToolImage->setSize(35, 35);
         PrintTools[i] = gcnew Button;
         PrintTools[i]->setNormal(ToolImage);
@@ -284,53 +285,31 @@ void MenuBar::SetBGCurrentColor(Color color)
 void MenuBar::SetToolCurrentColor(PrintTool tool)
 {
     CurrentPrintTool = tool;
-    CurrentTool->open(GetPrintToolFilePath(tool));
+    CurrentTool->setImage(GetPrintToolImage(tool));
     CurrentTool->setSize(35, 35);
 }
 
 Image* MenuBar::GetPrintToolImage(PrintTool tool)
 {
-    auto image = Image::load("");
+    Image* image = nullptr;
     switch (tool)
     {
     case MenuBar::LINE:
-        image = Image::load("./Tools/line.png");
+        image = Image::load(Resource(IDB_PNG_LINE, "PNG"));
         break;
     case MenuBar::RECT:
-        image = Image::load("./Tools/rect.png");
+        image = Image::load(Resource(IDB_PNG_RECT, "PNG"));
         break;
     case MenuBar::PEN:
-        image = Image::load("./Tools/pen.png");
+        image = Image::load(Resource(IDB_PNG_PEN, "PNG"));
         break;
-    case MenuBar::INIT:
-        image = Image::load("./Tools/init.png");
+    case MenuBar::RESET:
+        image = Image::load(Resource(IDB_PNG_RESET, "PNG"));
         break;
     default:
         break;
     }
     return image;
-}
-
-String MenuBar::GetPrintToolFilePath(PrintTool tool)
-{
-    switch (tool)
-    {
-    case MenuBar::LINE:
-        return "./Tools/line.png";
-        break;
-    case MenuBar::RECT:
-        return"./Tools/rect.png";
-        break;
-    case MenuBar::PEN:
-        return"./Tools/pen.png";
-        break;
-    case MenuBar::INIT:
-        return"./Tools/init.png";
-        break;
-    default:
-        return "";
-        break;
-    }
 }
 
 MenuBar::PrintTool MenuBar::GetCurrentPrintTool()
